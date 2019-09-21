@@ -5,6 +5,16 @@ void printf(char* str) {
   }
 }
 
+typedef void (*constructor)();
+extern "C" constructor* start_ctors;
+extern "C" constructor* end_ctors;
+
+extern "C" void CallConstructors() {
+  for (constructor* iter = &start_ctors; iter != end_ctors; ++iter) {
+    (*iter)();
+  }
+}
+
 extern "C" void KernelMain(void* multiboot_structure, unsigned int magic_number) {
   printf("Systems Ready!");
   while(true);
