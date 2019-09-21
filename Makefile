@@ -32,3 +32,7 @@ kakernel.iso: kakernel.bin
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
 	rm -rf iso
+
+run: kakernel.iso
+	(killall VirtualBox && sleep 1) || true
+	VirtualBox --startvm HachimoriOS &
