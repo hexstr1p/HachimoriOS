@@ -6,11 +6,11 @@ void printf(char* str) {
 }
 
 typedef void (*constructor)();
-extern "C" constructor* start_ctors;
-extern "C" constructor* end_ctors;
+extern "C" constructor start_ctors;
+extern "C" constructor end_ctors;
 
 extern "C" void CallConstructors() {
-  for (constructor* iter = &start_ctors; iter != end_ctors; ++iter) {
+  for (constructor* iter = &start_ctors; *iter != end_ctors; ++iter) {
     (*iter)();
   }
 }
