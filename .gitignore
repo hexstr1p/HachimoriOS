@@ -2,6 +2,11 @@
 # Created by https://www.gitignore.io/api/c,git,c++,linux,macos,windows,assembler
 # Edit at https://www.gitignore.io/?templates=c,git,c++,linux,macos,windows,assembler
 
+
+xorriso*
+
+
+
 ### Assembler ###
 *.exe
 *.o

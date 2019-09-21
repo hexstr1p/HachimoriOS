@@ -3,6 +3,9 @@ ASPARAMS = --32
 LDPARAMS = -melf_i386
 objects = loader.o kernel.o
 
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+
 %.o: %.cpp
 	g++ $(GPPPARAMS) -o $@ -c $<
 
